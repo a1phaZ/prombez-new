@@ -3361,3 +3361,22 @@ input:checked + button {
 input:checked + button + button {
   display: none;
 }
+
+#flash {
+	position: absolute;
+  width: 300px;
+  height: 10%;
+  /*border: 1px solid black;*/
+  bottom: 0;
+  right: 0;
+  opacity: .5;
+  z-index: 9000;
+}
+
+#flash.success{
+	background-color: greenyellow;
+}
+
+#flash.error{
+	background-color: red;
+}

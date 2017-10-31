@@ -5,13 +5,12 @@
  
 </head>
 <body>
-<!-- 	<script type="text/javascript" src="js/im_js.html"></script> -->
 	<center>
 		<div class="iform_block_in">
 			<div class="right">
 				<p class="htext uppercase"><font id="type1">ЗАЯВКА НА КОНСУЛЬТАЦИЮ<font></p>
 				<p class="phtext" style='text-align:center;'><font id="type1">Оставьте свои данные<br> в форме ниже и мы вам перезвоним<font></p>
-				<form class="main_form" id="form10" alt="10">
+				<form class="main_form" id="form10" alt="10" method="POST">
 					<input name="name" required="" class="inputname uppercase" id="name10" placeholder="Имя">
 					<input name="phone" required="" class="inputphone1 uppercase" id="phone10" placeholder="Телефон" style="margin:10px 0px;">
 					<input name="head_mess" type="hidden" id="type5" value="ЗАЯВКА НА КОНСУЛЬТАЦИЮ">
@@ -31,7 +30,7 @@
 					<input id="check" type="checkbox" / style="float: left;width: 17px;margin-top: -7px; margin-right: -8px;">	
 
 
-					<button class="form_button uppercase" style="padding-top: 10px;">Оставить заявку</button>	
+					<button type="submit" class="form_button uppercase" style="padding-top: 10px;">Оставить заявку</button>	
 					<button class="form_button uppercase" disabled="disabled" style="background: #9E9E9E; box-shadow: 0 4px #9E9E9E; padding-top: 10px;">Оставить заявку</button>
 				</form>
 			</div>
@@ -44,11 +43,17 @@
         var form_data = $(this).serialize(); //собераем все данные из формы
         $.ajax({
 	        type: "POST", //Метод отправки
-	        url: "form.php", //путь до php фаила отправителя
+	        url: "./form.php", //путь до php фаила отправителя
 	        data: form_data,
-	        success: function() {
+	        success: function(data) {
              //код в этом блоке выполняется при успешной отправке сообщения
-             alert("Ваше сообщение отпрвлено!");
+             console.log(data);
+             //alert("Ваше сообщение отправлено!");
+            },
+          error: function(error) {
+          	console.log(error);
+          	 //alert("Ваше сообщение не отправлено! Повторите попытку позже.");
+          }
         });
 	    });
 		});    

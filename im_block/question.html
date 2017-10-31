@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+	<title></title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<style>
+		::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+		    color:    #000 !important;
+		}
+		:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		   color:    #000 !important;
+		   opacity:  1;
+		}
+		::-moz-placeholder { /* Mozilla Firefox 19+ */
+		   color:    #000 !important;
+		   opacity:  1;
+		}
+		:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		   color:    #000 !important;
+		}
+	</style>
+	<div class="iform_block_in">
+		<div class="right">
+			<p class="htext uppercase"><font id="type1"><font></p>
+			<p class="phtext" style='text-align:center;'><font id="type1"><font></p>
+			<form class="main_form" method="POST" id="form11" alt="11">
+				<input name="name" class="inputemail uppercase" id="email11" placeholder="Ваше имя" style="margin:10px 0px;" required="required">
+				<input name="phone" class="inputphone1" id="phone11" placeholder="Ваш телефон" required="required">
+				<input name="head_mess" type="hidden" id="type5" value="ВОПРОС">
+				<textarea cols="41" rows="15" style="margin:7px 0px 26px 0px;width: 98%;" name="q" class="inputname" id="name11" placeholder="Задать вопрос" required="required"></textarea>
+				<button class="form_button uppercase">ОТПРАВИТЬ</button>
+				<p style=" font-size: 12px; padding-top: 15px;text-align: justify; color: #000; ">Нажимая кнопку «отправить» вы даете согласие на <b>обработку ваших персональных данных</b>. Мы гарантируем использование ваших данных только для регистрации и обработки вашей заявки. Полную редакцию «согласия об обработке персональных данных» вы можете найти по ссылке:
+				<a href="soglasie.html" target="_blank"><b>Соглашение на обработку <a href="soglasie.html" target="_blank"><b>персональных данных</b></a></b></a></p>
+			</form>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+	    $("#form11").submit(function() { //устанавливаем событие отправки для формы с id=form
+        var form_data = $(this).serialize(); //собераем все данные из формы
+        $.ajax({
+	        type: "POST", //Метод отправки
+	        url: "./form.php", //путь до php фаила отправителя
+	        data: form_data,
+	        success: function(data) {
+             //код в этом блоке выполняется при успешной отправке сообщения
+             console.log(data);
+             alert("Ваше сообщение отправлено!");
+            },
+          error: function(error) {
+          	console.log(error);
+          	 alert("Ваше сообщение не отправлено! Повторите попытку позже.");
+          }
+        });
+	    });
+		});    
+	</script>
+</body>
+</html>
